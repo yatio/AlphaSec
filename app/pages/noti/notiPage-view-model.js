@@ -1,107 +1,71 @@
-var Observable = require("data/observable").Observable;
-var LocalNotifications = require("nativescript-local-notifications");
-var dialogs = require("ui/dialogs");
+/*
+In NativeScript, a file with the same name as an XML file is known as
+a code-behind file. The code-behind is a great place to place your view
+logic, and to set up your page’s data binding.
+*/
 
-function doAddOnMessageReceivedCallback() {
-    LocalNotifications.addOnMessageReceivedCallback(
-        function(notificationData) {
-            dialogs.alert({
-                title: "Notification received",
-                message: "ID: " + notificationData.id +
-                "\nTitle: " + notificationData.title +
-                "\nBody: " + notificationData.body,
-                okButtonText: "Excellent!"
-            });
-        }
-    );
+/*
+NativeScript adheres to the CommonJS specification for dealing with
+JavaScript modules. The CommonJS require() function is how you import
+JavaScript modules defined in other files.
+*/ 
+var createViewModel = require("./main-view-model").createViewModel;
+
+function onNavigatingTo(args) {
+    /*
+    This gets a reference this page’s <Page> UI component. You can
+    view the API reference of the Page to see what’s available at
+    https://docs.nativescript.org/api-reference/classes/_ui_page_.page.html
+    */
+    var page = args.object;
+
+    /*
+    A page’s bindingContext is an object that should be used to perform
+    data binding between XML markup and JavaScript code. Properties
+    on the bindingContext can be accessed using the {{ }} syntax in XML.
+    In this example, the {{ message }} and {{ onTap }} bindings are resolved
+    against the object returned by createViewModel().
+
+    You can learn more about data binding in NativeScript at
+    https://docs.nativescript.org/core-concepts/data-binding.
+    */
+    page.bindingContext = createViewModel();
 }
 
-function createViewModelNot() {
-    var viewModel = new Observable();
-
-    viewModel.id = 0;
-    viewModel.title = "Titulo";
-    viewModel.body = "Texto";
-    viewModel.ticker = "Ticker";
-
-    doAddOnMessageReceivedCallback();
-
-    viewModel.schedule = function() {
-
-        LocalNotifications.schedule([{
-            id: this.id,
-            title: this.title,
-            body: this.body,
-            ticker: this.ticker,
-            at: new Date(new Date().getTime() + (10 * 1000))
-        }]).then(() => {
-            console.log("Notification scheduled");
-        }, (error) => {
-            console.log("ERROR", error);
-        });
-    }
-
-    return viewModel;
+/*
+Exporting a function in a NativeScript code-behind file makes it accessible
+to the file’s corresponding XML file. In this case, exporting the onNavigatingTo
+function here makes the navigatingTo="onNavigatingTo" binding in this page’s XML
+file work.
+*/
+exports.onNavigatingTo = onNavigatingTo;
+var createViewModel = require("./main-view-model").createViewModel;
+var frameModule =require("ui/frame");
+function onNavigatingTo(args) {
+    var page = args.object;
+    page.bindingContext = createViewModel();
 }
+exports.onNavigatingTo = onNavigatingTo;
 
-exports.createViewModelNot = createViewModelNot;
-
-//sql
-
-var Observable = require("data/observable").Observable;
-var Sqlite = require("nativescript-sqlite");
-
-function createViewModel(database) {
-    var viewModel = new Observable();
-    viewModel.titulo = "";
-    viewModel.day = "01";
-    viewModel.month = "01";
-    viewModel.year = "2018";
-    viewModel.hora = "12";
-    viewModel.minutos = "00";
-    console.log("entro")
-
-    viewModel.insert = function() {
-        console.log("Entro aqui por lomenos");
-        console.log("viewModel.day: " + viewModel.day)
-        console.log("viewModel.month: " + viewModel.month)
-        console.log("viewModel.year: " + viewModel.year)
-        console.log("viewModel.hora: " + viewModel.hora)
-        console.log("viewModel.minutos: " + viewModel.minutos)
-            var month = viewModel.month;
-            console.log("MESES: " + month);
-            if (viewModel.titulo !="")
-                {
-                    database.execSQL("INSERT INTO Pills (titulo, dia, mes, year, hora, minutos) VALUES (?, ?, ?, ?, ?, ?)", [this.titulo ,this.day, this.month, this.year, this.hora, this.minutos ]).then(id => { 
-                    console.log("INSERT RESULT", id);
-                    }, error => {
-                    console.log("INSERT ERROR", error);
-                    });
-                    alert("Ya se añadio");
-                }
-            else
-                {
-                    alert("Falta el titulo");
-                }
-            // if (mes > 0) 
-            //     mes = parseInt(mes) - 1;
-            // else
-            //     mes = 0;
-
-
+exports.notifiPage=function() {
+    // console.log("Navigating");
+    var navigationOptions={
+        moduleName:'pages/noti/notiPage'//,
+        // context:{param1: "value1",
+        //         param2: "value2"
+        //         }
     }
-
-    viewModel.select = function() {
-        database.all("SELECT * FROM Pills").then(rows => {
-            for(var row in rows) {
-                console.log("RESULT", rows[row]);
-            }
-        }, error => {
-            console.log("SELECT ERROR", error);
-        });
-    }
-
-    return viewModel;
+    
+    frameModule.topmost().navigate(navigationOptions);
 }
-
-exports.createViewModel = createViewModel;
+exports.seguriPage=function() {
+    // console.log("Navigating");
+    var navigationOptions={
+        moduleName:'pages/segu/seguPage'//,
+        // context:{param1: "value1",
+        //         param2: "value2"
+        //         }
+    }
+    
+    frameModule.topmost().navigate(navigationOptions);
+}

@@ -39,7 +39,6 @@ function here makes the navigatingTo="onNavigatingTo" binding in this page’s X
 file work.
 */
 exports.onNavigatingTo = onNavigatingTo;
-
 var createViewModel = require("./main-view-model").createViewModel;
 var frameModule =require("ui/frame");
 function onNavigatingTo(args) {
