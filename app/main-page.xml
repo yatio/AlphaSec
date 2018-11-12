@@ -10,7 +10,7 @@ https://docs.nativescript.org/ui/components.
     http://docs.nativescript.org/ui/action-bar
     -->
     <Page.actionBar>
-        <ActionBar title="My App" icon="" class="action-bar">
+        <ActionBar title="UPRA Emergency" icon="" class="action-bar" style="background: #FFC400">
         </ActionBar>
     </Page.actionBar>
     <!--
@@ -26,10 +26,10 @@ https://docs.nativescript.org/ui/components.
     -->
     <!-- <StackLayout class="p-20"> -->
     <StackLayout orientation="Vertical" >
-        <Image src="~/images/nike.jpg" />
-        <Label text="Tap the button" class="h1 text-center"/>
-        <Button text="Notificaciones" style="width:150;height:100; background-color: #3498DB" class="btn btn-primary" tap="notifiPage" />
-        <Button text="Seguridad" style="width:150;height:100; background-color: #3498DB" class="btn btn-primary" tap="seguriPage" />
+        <Image src="~/images/uprarecibo.jpg" />
+        <Label text="Escoja un opcion" class="h2 text-center"/>
+        <Button text="Notificaciones" style="width:150;height:80" class="btn" tap="notifiPage" />
+        <Button text="Seguridad" style="width:150;height:80" class="btn" tap="seguriPage" />
         <!-- <Button text="TAP" tap="notifiPage" class="btn btn-primary btn-active"/> -->
         <!-- <Label text="{{ message }}" class="h2 text-center" textWrap="true"/> -->
     </StackLayout>
