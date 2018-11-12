@@ -1,18 +1,9 @@
-<!--
-The markup in NativeScript apps contains a series of user interface components, each
-of which NativeScript renders with a platform-specific iOS or Android native control.
-You can find a full list of user interface components you can use in your app at
-https://docs.nativescript.org/ui/components.
--->
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page">
-    <!--
-    The ActionBar is the NativeScript common abstraction over the Android ActionBar and iOS NavigationBar.
-    http://docs.nativescript.org/ui/action-bar
-    -->
     <Page.actionBar>
         <ActionBar title="UPRA Emergency" icon="" class="action-bar" style="background: #FFC400">
         </ActionBar>
     </Page.actionBar>
+<<<<<<< HEAD
     <!--
     The StackLayout stacks UI components on the screen—either vertically or horizontally.
     In this case, the StackLayout does vertical stacking; you can change the stacking to
@@ -32,5 +23,11 @@ https://docs.nativescript.org/ui/components.
         <Button text="Seguridad" style="width:150;height:80" class="btn" tap="seguriPage" />
         <!-- <Button text="TAP" tap="notifiPage" class="btn btn-primary btn-active"/> -->
         <!-- <Label text="{{ message }}" class="h2 text-center" textWrap="true"/> -->
+=======
+    <StackLayout orientation="Vertical">
+        <Image src="~/images/nike.jpg"/>
+        <Button text="Notificaciones" style="width:150;height:100; background-color: #3498DB" class="btn btn-primary" tap="notifiPage" />
+        <Button text="Seguridad" style="width:150;height:100; background-color: #3498DB" class="btn btn-primary" tap="seguriPage" />
+>>>>>>> 2acfeb1b505504c41c077625192a253bfedb4c3b
     </StackLayout>
 </Page>
