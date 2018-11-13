@@ -1,6 +1,11 @@
 var Observable = require("data/observable").Observable;
 var LocalNotifications = require("nativescript-local-notifications");
 var dialogs = require("ui/dialogs");
+var Observable = require("data/observable").Observable;
+var Sqlite = require("nativescript-sqlite");
+
+exports.createViewModelNot = createViewModelNot;
+exports.createViewModel = createViewModel;
 
 function doAddOnMessageReceivedCallback() {
     LocalNotifications.addOnMessageReceivedCallback(
@@ -44,12 +49,6 @@ function createViewModelNot() {
     return viewModel;
 }
 
-exports.createViewModelNot = createViewModelNot;
-
-//sql
-
-var Observable = require("data/observable").Observable;
-var Sqlite = require("nativescript-sqlite");
 
 function createViewModel(database) {
     var viewModel = new Observable();
@@ -104,4 +103,3 @@ function createViewModel(database) {
     return viewModel;
 }
 
-exports.createViewModel = createViewModel;
