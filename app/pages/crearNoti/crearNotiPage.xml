@@ -1,0 +1,17 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page">
+
+    <Page.actionBar>
+        <ActionBar title="Seguridad" icon="" class="action-bar" style="background: #FFC400">
+        </ActionBar>
+    </Page.actionBar>
+
+    <StackLayout>
+        <Label text="Titulo de Notificacion:" class="h2 text-center"/>
+        <TextField hint="Titulo" text="{{ titulo }}"  />
+        <Label text="Mensaje de Notificacion: " class="h3 text-center"/>
+        <TextField hint="Mensaje" text="{{ mensaje }}"  />
+        <Label text="Nivel de Alerta " class="h3 text-center"/>
+
+
+    </StackLayout>
+</Page>
